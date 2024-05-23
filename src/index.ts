@@ -1,17 +1,17 @@
 import express, { json } from "express";
 import usersRouter from "./routes/users";
-import logger from "./middleware/logger";
 import notFound from "./middleware/not-found";
 import connect from "./db/connection";
 import configDevEnv from "../config";
 import errorHandler from "./middleware/error-handler";
+import morgan from "morgan";
 configDevEnv();
 connect();
 const app = express();
 
 //middleware chain:
 app.use(json());
-app.use(logger);
+app.use(morgan("dev"));
 
 //http://localhost:8080/api/v1/users
 app.use("/api/v1/users", usersRouter);
