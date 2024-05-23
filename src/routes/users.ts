@@ -1,17 +1,14 @@
-// Router from express
 import { Router } from "express";
 import { createUser } from "../services/users-service";
-import userSchema from "../validations/user-schema";
-
+import {validateUser } from "../middleware/joi/validate-schema";
 const router = Router();
 
-router.post("/", async (req, res, next) => {
+router.post("/", validateUser, async (req, res, next) => {
   try {
-    const user = await userSchema.validateAsync(req.body);
-    //throw {}
-    //throw new Error()
+    const result = await createUser(req.body);
 
-    const saved = await createUser(user);
+    const { password, ...saved } = result.toJSON();
+    //return all data but saved!
     res.status(201).json(saved);
   } catch (e) {
     next(e);
