@@ -29,8 +29,13 @@ export type IUser = {
   createdAt: Date;
   isBusiness: boolean;
   isAdmin: boolean;
-  
+
   address: IAddress;
   name: IName;
-  image?: IImage
+  image?: IImage;
+};
+
+export type ILogin = {
+  email: string;
+  password: string
 };
