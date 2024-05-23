@@ -18,8 +18,7 @@ const userSchema = Joi.object<IUser>({
   }).required(),
   name: Joi.object<IName>({
     first: Joi.string().min(2).max(50).required(),
-    //TODO: CHECK THIS with postman
-    middle: Joi.string().min(0).allow(""),
+    middle: Joi.string().min(0),
     last: Joi.string().min(2).max(50).required(),
   }).required(),
   //image //Joi string uri

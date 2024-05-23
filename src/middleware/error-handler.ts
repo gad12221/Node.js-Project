@@ -13,7 +13,9 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     return res.status(400).json({ message: "Invalid JSON" });
   }
 
+  //if err is JOI error (consider adding more details)
   if (err && err.name && err.name == "ValidationError") {
+    //TODO CHECK IF its MONGO VS JOI
     return res.status(400).json({ message: err.message });
   }
 

@@ -1,13 +1,15 @@
 // Router from express
 import { Router } from "express";
 import { createUser } from "../services/users-service";
+import userSchema from "../validations/user-schema";
 
 const router = Router();
 
 router.post("/", async (req, res, next) => {
-  //validate
   try {
-    const saved = await createUser(req.body); 
+    const user = await userSchema.validateAsync(req.body);
+
+    const saved = await createUser(user);
     res.status(201).json(saved);
   } catch (e) {
     next(e);
