@@ -28,10 +28,9 @@ const userSchema = Joi.object<IUser>({
     middle: Joi.string().min(0),
     last: Joi.string().min(2).max(50).required(),
   }).required(),
-  //image //Joi string uri
   image: imageSchema,
 });
 
 export default userSchema;
 
-export {addressSchema, imageSchema}
+export { addressSchema, imageSchema, userSchema };

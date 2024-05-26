@@ -1,15 +1,22 @@
 import { ICardInput } from "../@types/@types";
+import Card from "../db/models/card-model";
 
 export const cardService = {
-  createCard: (data: ICardInput, userId: string) => {
+  createCard: async (data: ICardInput, userId: string) => {
     //userId is extracted from the JWT
+    const card = new Card(data);
+    card.userId = userId;
 
-    //const card = new Card(data);
+    //generate random bizNumber:
+    while (true) {
+      const r = Math.round(Math.random() * 1_000_000);
+      const dbRes = await Card.findOne({ bizNumber: r });
+      if (!dbRes) {
+        card.bizNumber = r;
+        break;
+      }
+    }
 
-    //card.userId = userId;
-
-    //gen random id
-
-    //return card.save();
+    return card.save();
   },
 };

@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { createUser, loginUser } from "../services/users-service";
-import { validateLogin, validateUser } from "../middleware/joi/validate-schema";
+import { validateLogin, validateUser } from "../middleware/joi";
 const router = Router();
+
+
 
 router.post("/login", validateLogin, async (req, res, next) => {
   try {

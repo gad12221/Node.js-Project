@@ -1,8 +1,5 @@
 import { RequestHandler } from "express";
-import userSchema from "../../validations/user-schema";
 import { ObjectSchema } from "joi";
-import loginSchema from "../../validations/login-schema";
-
 type ValidateSchema = (schema: ObjectSchema) => RequestHandler;
 
 export const validateSchema: ValidateSchema =
@@ -15,7 +12,4 @@ export const validateSchema: ValidateSchema =
     }
   };
 
-const validateUser = validateSchema(userSchema);
-const validateLogin = validateSchema(loginSchema);
-
-export { validateUser, validateLogin };
+ 
