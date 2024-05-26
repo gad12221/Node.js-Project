@@ -46,3 +46,15 @@ export type IJWTPayload = {
   isAdmin: boolean,
   isBusiness: boolean
 }
+
+
+export type ICard = {
+  title: string;
+  subtitle: string;
+  description: string;
+  phone: string;
+  email: string;
+  web: string;
+  image: IImage;
+  address: IAddress
+};
