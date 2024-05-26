@@ -2,10 +2,8 @@ import { Schema } from "mongoose";
 import { ICard } from "../../@types/@types";
 import addressSchema from "./address-schema";
 import imageSchema from "./image-schema";
-import { required } from "joi";
 
-//TODO: update ICard to include extra properties
-const cardSchema = new Schema({
+const cardSchema = new Schema<ICard>({
   title: { type: String, required: true, minlength: 2, maxlength: 256 },
   subtitle: { type: String, required: true, minlength: 2, maxlength: 256 },
   description: { type: String, required: true, minlength: 2, maxlength: 1024 },
@@ -15,7 +13,6 @@ const cardSchema = new Schema({
   address: { type: addressSchema, required: true },
   image: { type: imageSchema, required: true },
 
-  //   likes, createdAt, userId, bizNumber
   likes: [
     {
       type: String,
@@ -25,3 +22,5 @@ const cardSchema = new Schema({
   userId: { type: String, required: true },
   bizNumber: { type: Number, required: false, default: Math.random() },
 });
+
+export default cardSchema;

@@ -48,7 +48,7 @@ export type IJWTPayload = {
 }
 
 
-export type ICard = {
+export type ICardInput = {
   title: string;
   subtitle: string;
   description: string;
@@ -57,4 +57,12 @@ export type ICard = {
   web: string;
   image: IImage;
   address: IAddress
+};
+
+export type ICard = ICardInput & {
+  _id: string, 
+  bizNumber: number,
+  createdAt: Date,
+  likes: string[],
+  userId: string
 };
