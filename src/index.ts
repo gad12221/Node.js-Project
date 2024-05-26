@@ -5,6 +5,7 @@ import connect from "./db/connection";
 import configDevEnv from "../config";
 import errorHandler from "./middleware/error-handler";
 import morgan from "morgan";
+import { cardRouter } from "./routes/cards";
 configDevEnv();
 connect();
 const app = express();
@@ -15,6 +16,7 @@ app.use(morgan("dev"));
 
 //http://localhost:8080/api/v1/users
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/cards", cardRouter);
 app.use(errorHandler);
 app.use(notFound);
 
