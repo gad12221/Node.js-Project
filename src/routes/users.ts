@@ -3,6 +3,7 @@ import { createUser } from "../services/users-service";
 import { validateLogin, validateUser } from "../middleware/joi/validate-schema";
 import User from "../db/models/user-model";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 const router = Router();
 
 router.post("/login", validateLogin, async (req, res, next) => {
@@ -16,8 +17,13 @@ router.post("/login", validateLogin, async (req, res, next) => {
     }
 
     const isValid = await bcrypt.compare(req.body.password, user.password);
-
+    const {_id, isAdmin, isBusiness} = user;
+    const payload = {_id, isAdmin, isBusiness};
+    //JWT:{_id, isAdmin, isBusiness}
+ 
+    const token = jwt.sign(payload, "secret");
     if (isValid) return res.json({ message: "logged in" });
+
 
     res.status(401).json({ message: "invalid email or password" });
   } catch (e) {

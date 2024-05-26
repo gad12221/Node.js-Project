@@ -8,7 +8,7 @@ import morgan from "morgan";
 configDevEnv();
 connect();
 const app = express();
-
+console.log(process.env.JWT_SECRET);
 //middleware chain:
 app.use(json());
 app.use(morgan("dev"));
