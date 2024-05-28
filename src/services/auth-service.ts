@@ -26,7 +26,7 @@ export const authService = {
     }
 
     const payload = jwt.verify(token, secret) as IJWTPayload;
-
+    
     return payload;
   },
 };
