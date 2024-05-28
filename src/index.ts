@@ -6,8 +6,13 @@ import configDevEnv from "../config";
 import errorHandler from "./middleware/error-handler";
 import morgan from "morgan";
 import { cardRouter } from "./routes/cards";
+import { Logger } from "./logs/logger";
 configDevEnv();
 connect();
+
+
+Logger.error('hi')
+
 const app = express();
 console.log(process.env.JWT_SECRET);
 //middleware chain:
@@ -17,6 +22,7 @@ app.use(morgan("dev"));
 //http://localhost:8080/api/v1/users
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/cards", cardRouter);
+app.use(express.static("public"));
 app.use(errorHandler);
 app.use(notFound);
 

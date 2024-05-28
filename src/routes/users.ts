@@ -1,13 +1,32 @@
 import { Router } from "express";
-import { createUser, loginUser } from "../services/users-service";
+import { usersService } from "../services/users-service";
 import { validateLogin, validateUser } from "../middleware/joi";
+import { isAdmin } from "../middleware/is-admin";
+import { isAdminOrSelf } from "../middleware/is-admin-or-self";
+
 const router = Router();
 
+router.get("/:id", ...isAdminOrSelf, async (req, res, next) => {
+  try {
+    const user = await usersService.getUserById(req.params.id);
+    res.json(user);
+  } catch (e) {
+    next(e);
+  }
+});
 
+router.get("/", ...isAdmin, async (req, res, next) => {
+  try {
+    const users = await usersService.getAllUsers();
+    res.json(users);
+  } catch (e) {
+    next(e);
+  }
+});
 
 router.post("/login", validateLogin, async (req, res, next) => {
   try {
-    const jwt =  await loginUser(req.body);
+    const jwt = await usersService.loginUser(req.body);
     res.send(jwt);
   } catch (e) {
     next(e);
@@ -16,7 +35,7 @@ router.post("/login", validateLogin, async (req, res, next) => {
 
 router.post("/", validateUser, async (req, res, next) => {
   try {
-    const result = await createUser(req.body);
+    const result = await usersService.createUser(req.body);
     const { password, ...saved } = result.toJSON();
     //return all data but saved!
     res.status(201).json(saved);
