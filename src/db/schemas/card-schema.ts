@@ -20,7 +20,7 @@ const cardSchema = new Schema<ICard>({
   ],
   createdAt: { type: Date, required: false, default: new Date() },
   userId: { type: String, required: true },
-  bizNumber: { type: Number, required: false, default: Math.random() },
+  bizNumber: { type: Number, required: true, min: 1_000_000, max: 9_999_999 },
 });
 
 export default cardSchema;
