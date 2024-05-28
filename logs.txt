@@ -1,3 +1,151 @@
 hi
 hi
 hi
+hi
+hi
+hi
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database not connected
+hi
+Database not connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+hi
+Database Connected
+hi
+Database not connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+hi
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+Database Connected
+hi
+{
+  name: {
+    first: 'TomerBu',
+    middle: '',
+    last: 'Bu',
+    _id: new ObjectId('6655c369c1412e6f9eadb1d8')
+  },
+  address: {
+    country: 'Israel',
+    state: 'IL',
+    city: 'Tel aviv',
+    street: 'Shoham',
+    zip: '8920435',
+    houseNumber: 5,
+    _id: new ObjectId('6655c369c1412e6f9eadb1d9')
+  },
+  email: 'tomerbu@gmail.com',
+  password: 'Abc!123Abc',
+  phone: '0507123012',
+  isBusiness: true,
+  createdAt: 2024-05-28T11:43:36.768Z,
+  isAdmin: true,
+  _id: new ObjectId('6655c369c1412e6f9eadb1d7'),
+  __v: 0
+}
+Database Connected
+hi
+hi
+Database Connected
+hi
+Database Connected
