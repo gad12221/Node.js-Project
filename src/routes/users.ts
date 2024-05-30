@@ -1,10 +1,20 @@
 import { Router } from "express";
 import { usersService } from "../services/users-service";
-import { validateLogin, validateUser } from "../middleware/joi";
+import { validateCard, validateLogin, validateUser } from "../middleware/joi";
 import { isAdmin } from "../middleware/is-admin";
 import { isAdminOrSelf } from "../middleware/is-admin-or-self";
+import { isSelf } from "../middleware/is-self";
 
 const router = Router();
+
+router.put("/:id", ...isSelf, validateUser, async (req, res, next) => {
+  try {
+    const saved = await usersService.updateUser(req.body, req.payload._id);
+    res.json(saved);
+  } catch (e) {
+    next(e);
+  }
+});
 
 router.get("/:id", ...isAdminOrSelf, async (req, res, next) => {
   try {

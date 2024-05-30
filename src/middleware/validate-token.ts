@@ -20,7 +20,7 @@ const validateToken: RequestHandler = (req, res, next) => {
     //check that the token is valid, and extract it's payload:
     const payload = authService.validateJWT(token);
 
-    //add the data to the request => 
+    //add the data to the request =>
     //available to the next steps in the middleware chain
     req.payload = payload;
 
@@ -30,4 +30,4 @@ const validateToken: RequestHandler = (req, res, next) => {
   }
 };
 
-export {validateToken, extractToken};
+export { validateToken, extractToken };

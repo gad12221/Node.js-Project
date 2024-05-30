@@ -5,10 +5,12 @@ import { MongoServerError } from "mongodb";
 import BizCardsError from "../errors/BizCardsError";
 
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  //my error
   if (err instanceof BizCardsError) {
     return res.status(err.status).json(err);
   }
 
+  //express json error
   if (err instanceof SyntaxError) {
     return res.status(400).json({ message: "Invalid JSON" });
   }

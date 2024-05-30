@@ -1,4 +1,6 @@
+import { IUser } from "../@types/@types";
 import { Logger } from "../logs/logger";
+import { usersService } from "../services/users-service";
 import { users } from "./initial-data";
 import User from "./models/user-model";
 
@@ -9,8 +11,7 @@ const initDB = async () => {
     if (usersCount != 0) return;
 
     for (let u of users) {
-      const user = new User(u);
-      const saved = await user.save();
+      const saved = await usersService.createUser(u);
       Logger.verbose(saved);
     }
   } catch (e) {
