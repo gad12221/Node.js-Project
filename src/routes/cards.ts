@@ -14,6 +14,13 @@ router.post("/", ...isBusiness, validateCard, async (req, res, next) => {
   }
 });
 
-//
+router.get("/", async (req, res, next) => {
+  try {
+    const cards = await cardService.getCards();
+    res.json(cards);
+  } catch (e) {
+    next(e);
+  }
+});
 
 export { router as cardRouter };

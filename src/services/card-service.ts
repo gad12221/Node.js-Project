@@ -1,15 +1,15 @@
 import _ from "underscore";
-import { ICard, ICardInput } from "../@types/@types";
+import {ICardInput } from "../@types/@types";
 import Card from "../db/models/card-model";
+import { Logger } from "../logs/logger";
 
-const generateBizNumber = async (card: ICard) => {
+const generateBizNumber = async () => {
   //generate random bizNumber:
   while (true) {
     const r = _.random(1_000_000, 9_999_999);
     const dbRes = await Card.findOne({ bizNumber: r });
     if (!dbRes) {
-      card.bizNumber = r;
-      break;
+      return r;
     }
   }
 };
@@ -21,8 +21,12 @@ export const cardService = {
     //assign user id to the card:
     card.userId = userId;
     //generate biz number to the card:
-    generateBizNumber(card);
+    card.bizNumber = await generateBizNumber();
+
+    Logger.log(card.bizNumber);
 
     return card.save();
   },
+
+  getCards: async () => Card.find(),
 };
