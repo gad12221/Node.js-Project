@@ -10,6 +10,12 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     return res.status(err.status).json(err);
   }
 
+  //Invalid Object ID:
+  if (err && err.name && err.name == "CastError" && err.path && err.value) {
+    return res
+      .status(400)
+      .json({ message: "Invalid object id", path: err.path, value: err.value });
+  }
   //express json error
   if (err instanceof SyntaxError) {
     return res.status(400).json({ message: "Invalid JSON" });
@@ -26,6 +32,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     return res.status(400).json({ message: err.message });
   }
 
+  console.error(err);
   //internal server error
   return res.status(500).json(err);
 };

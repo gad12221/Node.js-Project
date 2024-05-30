@@ -14,6 +14,7 @@ const initDB = async () => {
       const saved = await usersService.createUser(u);
       Logger.verbose(saved);
     }
+    //TODO: card must have a user id
   } catch (e) {
     Logger.log(e);
   }

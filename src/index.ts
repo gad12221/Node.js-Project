@@ -1,3 +1,4 @@
+
 import express, { json } from "express";
 import usersRouter from "./routes/users";
 import notFound from "./middleware/not-found";
@@ -9,16 +10,15 @@ import { cardRouter } from "./routes/cards";
 import { Logger } from "./logs/logger";
 configDevEnv();
 connect();
-
-
-Logger.error('hi')
+import cors from 'cors';
+Logger.error("hi");
 
 const app = express();
 console.log(process.env.JWT_SECRET);
 //middleware chain:
 app.use(json());
 app.use(morgan("dev"));
-
+app.use(cors());
 //http://localhost:8080/api/v1/users
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/cards", cardRouter);

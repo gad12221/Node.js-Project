@@ -29,4 +29,6 @@ export const cardService = {
   },
 
   getCards: async () => Card.find(),
+
+  getCard: async (id:string) => Card.findById(id),
 };
