@@ -3,9 +3,18 @@ import { validateCard } from "../middleware/joi";
 import { cardService } from "../services/card-service";
 import { isBusiness } from "../middleware/is-business";
 import BizCardsError from "../errors/BizCardsError";
+import { validateToken } from "../middleware/validate-token";
 
 const router = Router();
 
+router.get("/my-cards", validateToken, async (req, res, next) => {
+  try {
+    const cards = await cardService.getCardByUserId(req.payload._id);
+    res.json(cards);
+  } catch (e) {
+    next(e);
+  }
+});
 router.post("/", ...isBusiness, validateCard, async (req, res, next) => {
   try {
     const result = await cardService.createCard(req.body, req.payload._id);
