@@ -4,13 +4,6 @@ import BizCardsError from "../errors/BizCardsError";
 import { authService } from "./auth-service";
 
 export const usersService = {
-  updateUser: async (data: IUserInput, id: string) => {
-    data.password = await authService.hashPassword(data.password);
-    
-    
-    return User.findOneAndUpdate({ _id: id }, data, {new: true});
-  },
-
   createUser: async (data: IUserInput) => {
     const user = new User(data);
     //replace the password with it's hash
