@@ -1,7 +1,7 @@
 import bcrypt, { compare } from "bcrypt";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { IJWTPayload } from "../@types/@types";
-//security methods
+
 export const authService = {
   hashPassword: (plainTextPassword: string, rounds = 12) => {
     return bcrypt.hash(plainTextPassword, rounds);
@@ -26,7 +26,7 @@ export const authService = {
     }
 
     const payload = jwt.verify(token, secret) as IJWTPayload;
-    
+
     return payload;
   },
 };

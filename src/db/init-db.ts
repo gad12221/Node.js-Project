@@ -1,23 +1,28 @@
-import { IUser } from "../@types/@types";
 import { Logger } from "../logs/logger";
 import { usersService } from "../services/users-service";
-import { users } from "./initial-data";
+import { cardService } from "../services/card-service";
+import { users, cards } from "./initial-data";
 import User from "./models/user-model";
 
 const initDB = async () => {
-  try {
-    const usersCount = await User.countDocuments();
+  const usersCount = await User.countDocuments();
 
-    if (usersCount != 0) return;
+  if (usersCount != 0) return;
 
-    for (let u of users) {
-      const saved = await usersService.createUser(u);
-      Logger.verbose(saved);
-    }
-    //TODO: card must have a user id
-  } catch (e) {
-    Logger.log(e);
+  for (let i = 0; i < users.length; i++) {
+    const userData = users[i];
+    const createdUser = await usersService.createUser(userData);
+
+
+    const cardData = {
+      ...cards[i],
+      userId: createdUser._id.toString(),
+    };
+
+    await cardService.createCard(cardData, createdUser._id.toString());
   }
-};
+
+  Logger.log("Users and Business Cards Saved");
+}
 
 export default initDB;

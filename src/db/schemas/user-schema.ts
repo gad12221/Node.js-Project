@@ -24,4 +24,5 @@ const userSchema = new Schema<IUser>({
   isAdmin: { required: false, type: Boolean, default: false },
 });
 
+
 export default userSchema;

@@ -12,5 +12,5 @@ const _isBusiness: RequestHandler = (req, res, next) => {
   next(new BizCardsError(403, "Must be a business"));
 };
 
-//export an array of middleware
+
 export const isBusiness = [validateToken, _isBusiness];

@@ -1,64 +1,136 @@
 const users = [
   {
-    isAdmin: true,
     name: {
-      first: "TomerBu",
+      first: "Admin",
       middle: "",
-      last: "Bu",
+      last: "Test",
     },
     phone: "0507123012",
-    email: "tomerbu@gmail.com",
+    email: "admin@gmail.com",
     password: "Abc!123Abc",
     address: {
       state: "IL",
       country: "Israel",
       city: "Tel aviv",
-      street: "Shoham",
+      street: "Test",
       houseNumber: 5,
       zip: "8920435",
+    },
+    isBusiness: true,
+    isAdmin: true,
+
+  },
+  {
+    name: {
+      first: "Business",
+      middle: "",
+      last: "Test",
+    },
+    phone: "0507123034",
+    email: "businessu@gmail.com",
+    password: "Abc!123Abc",
+    address: {
+      state: "IL",
+      country: "Israel",
+      city: "Tel aviv",
+      street: "Test",
+      houseNumber: 5,
+      zip: "8920446",
     },
     isBusiness: true,
   },
   {
     name: {
-      first: "Moshe",
+      first: "Client",
       middle: "",
-      last: "Doe",
+      last: "Test",
     },
-    phone: "050-8123012",
-    email: "moshe@gmail.com",
+    phone: "0507123015",
+    email: "clientu@gmail.com",
     password: "Abc!123Abc",
     address: {
       state: "IL",
       country: "Israel",
-      city: "Haifa",
-      street: "HaNevim",
+      city: "Tel aviv",
+      street: "Test",
       houseNumber: 5,
-      zip: "8920435",
+      zip: "8920476",
     },
-    isBusiness: true,
+    isBusiness: false,
   },
 ];
 const cards = [
   {
-    title: "a wonderful new card",
+
+    title: "Test1",
     subtitle: "a test value for this card",
     description: "a test value for new card\na test value for new card\n",
     phone: "050-3211234",
-    email: "qwe@gmail.com",
+    email: "test1@gmail.com",
     web: "https://www.bing.com",
     image: {
-      url: "https://img.izismile.com/img/img13/20201030/640/you_have_never_seen_something_like_this_640_36.jpg",
-      alt: "image of something",
+      url: "https://www.picshare.co.il/m_pictures/img174576.jpg",
+      "alt": "image of something"
     },
     address: {
       state: "IL",
       country: "Israel",
-      city: "Tel aviv",
+      city: "Arad",
       street: "Shoham",
       houseNumber: 5,
-      zip: "8920435",
+      zip: "8920435"
     },
+
+
+
+  },
+  {
+
+    title: "Test2",
+    subtitle: "a test value for this card",
+    description: "a test value for new card\na test value for new card\n",
+    phone: "050-3211235",
+    email: "test2@gmail.com",
+    web: "https://www.google.com/",
+    image: {
+      url: "https://www.picshare.co.il/m_pictures/img167491.jpg",
+      "alt": "image of something"
+    },
+    address: {
+      state: "IL",
+      country: "Israel",
+      city: "EILAT",
+      street: "Shushan",
+      houseNumber: 2,
+      zip: "8912345"
+    },
+
+
+
+  },
+  {
+
+    title: "Test3",
+    subtitle: "a test value for this card",
+    description: "a test value for new card\na test value for new card\n",
+    phone: "050-3211236",
+    email: "test3@gmail.com",
+    web: "https://www.walla.co.il",
+    image: {
+      url: "https://www.photo-art.co.il/wp-content/uploads/2015/09/BY1A4457.jpg",
+      "alt": "image of something"
+    },
+    address: {
+      state: "IL",
+      country: "Israel",
+      city: "Holon",
+      street: "Shalom",
+      houseNumber: 6,
+      zip: "8925432"
+    },
+
+
+
   },
 ];
-export { users , cards};
+export { users, cards };

@@ -8,7 +8,7 @@ const cardSchema = new Schema<ICard>({
   subtitle: { type: String, required: true, minlength: 2, maxlength: 256 },
   description: { type: String, required: true, minlength: 2, maxlength: 1024 },
   phone: { type: String, required: true, minlength: 9, maxlength: 11 },
-  email: { type: String, required: true, minlength: 5, maxlength: 30 },
+  email: { type: String, required: true, minlength: 5, maxlength: 30, unique: true },
   web: { type: String, required: false, minlength: 14, maxlength: 100 },
   address: { type: addressSchema, required: true },
   image: { type: imageSchema, required: true },

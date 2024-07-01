@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,85 @@
     <meta name="keywords" content="API, web development, HTML">
     <title>API Docs</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/Gadi_logo.png" type="image/x-icon">
 </head>
+
 <body>
-    <h1>API Documentation</h1>
-    <p>Welcome to the API documentation page. Here you can find information about the available endpoints and how to use them.</p>
+    <main>
+        <header>
+            <h1>Gadi's API Documentation</h1>
+        </header>
+        <div class="paragraph">
+            <p>Welcome to the API documentation page. Here you can find information about the available endpoints and
+                how to
+                use
+                them.</p>
+
+            <div id="users">
+                <h2>Users API</h2>
+                <h3>POST /api/v1/users</h3>
+                <p>This endpoint creates a new user.</p>
+
+                <h3>POST /api/v1/users/login</h3>
+                <p>This endpoint logs in a user.</p>
+
+                <h3>GET /api/v1/users</h3>
+                <p>This endpoint returns a list of all users.</p>
+
+                <h3>GET /api/v1/users/:id?</h3>
+                <p>This endpoint returns a user by their ID.</p>
+
+                <h3>PUT /api/v1/users/:id?</h3>
+                <p>This endpoint updates a user's information.</p>
+
+                <h3>DELETE /api/v1/users/:id?</h3>
+                <p>This endpoint deletes a user by their ID.</p>
+
+                <h3>PATCH /api/v1/users/:id?</h3>
+                <p>This endpoint changes a user's business status.</p>
+
+                <a class="link" target="_blank" href="https://documenter.getpostman.com/view/34977978/2sA3duEsG4">Enter
+                    the
+                    Documentation of Users API
+                    for requests, responses, and more details</a>
+
+            </div>
+            <div id="Cards">
+                <h2>Cards API</h2>
+
+                <h3>POST /api/v1/cards</h3>
+                <p>This endpoint creates a new card.</p>
+
+                <h3>GET /api/v1/cards</h3>
+                <p>This endpoint returns a list of all cards.</p>
+
+                <h3>GET /api/v1/cards/:id?</h3>
+                <p>This endpoint returns a card by its ID.</p>
+
+                <h3>GET /api/v1/cards/my-cards</h3>
+                <p>This endpoint returns all cards created by the authenticated user.</p>
+
+                <h3>PUT /api/v1/cards/:id?</h3>
+                <p>This endpoint updates a card's information.</p>
+
+                <h3>DELETE /api/v1/cards/:id?</h3>
+                <p>This endpoint deletes a card by its ID.</p>
+
+                <h3>PATCH /api/v1/cards/:id?</h3>
+                <p>This endpoint changes a card's business number.</p>
+
+                <h3>PATCH /api/v1/cards/:id?</h3>
+                <p>This endpoint likes a card by its ID.</p>
+                <a class="link" target="_blank" href="https://documenter.getpostman.com/view/34977978/2sA3duGtE4">Enter
+                    the
+                    Documentation of Cards
+                    API for requests, responses, and more details</a>
+            </div>
+        </div>
+        <footer>
+            &copy; 2024 Gadi Elkalay. All rights reserved.
+        </footer>
+    </main>
 </body>
+
 </html>

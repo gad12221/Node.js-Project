@@ -21,7 +21,7 @@ const userSchema = Joi.object<IUser>({
   email: Joi.string().email().required(),
   phone: Joi.string().pattern(phoneRegex).required(),
   password: Joi.string().pattern(passwordRegex).required(),
-  //address
+
   address: addressSchema.required(),
   name: Joi.object<IName>({
     first: Joi.string().min(2).max(50).required(),

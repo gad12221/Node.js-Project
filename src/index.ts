@@ -11,15 +11,18 @@ import { Logger } from "./logs/logger";
 configDevEnv();
 connect();
 import cors from 'cors';
-Logger.error("hi");
+import chalk from "chalk";
+Logger.log(`Express.js server that connects to a database, includes logging, handles errors, and has routes for managing users and cards
+  
+  
+`);
 
 const app = express();
-console.log(process.env.JWT_SECRET);
-//middleware chain:
+
+
 app.use(json());
 app.use(morgan("dev"));
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5172"] }));
-//http://localhost:8080/api/v1/users
+app.use(cors({ origin: "*" }));
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/cards", cardRouter);
 app.use(express.static("public"));
@@ -27,7 +30,9 @@ app.use(errorHandler);
 app.use(notFound);
 
 //start the server:
-app.listen(8080, () => {
-  console.log("Server is running on http://localhost:8080");
+const port = 8080
+app.listen(port, () => {
+
+  console.log(`Server is running on PORT ${chalk.red(port)}`);
   console.log(`App is running in ${process.env.NODE_ENV} mode`);
 });

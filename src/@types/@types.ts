@@ -1,6 +1,3 @@
-export type Cat = {
-  name: string;
-};
 
 export type IName = {
   first: string;
@@ -44,7 +41,7 @@ export type ILogin = {
 
 
 export type IJWTPayload = {
-  _id: string, 
+  _id: string,
   isAdmin: boolean,
   isBusiness: boolean
 }
@@ -62,8 +59,8 @@ export type ICardInput = {
 };
 
 export type ICard = ICardInput & {
-  _id: string, 
-  bizNumber: number,
+  _id: string,
+  bizNumber: Number,
   createdAt: Date,
   likes: string[],
   userId: string

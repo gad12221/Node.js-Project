@@ -3,27 +3,28 @@ import { ErrorRequestHandler } from "express";
 
 import { MongoServerError } from "mongodb";
 import BizCardsError from "../errors/BizCardsError";
+import { Logger } from "../logs/logger";
 
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  //my error
+
   if (err instanceof BizCardsError) {
     return res.status(err.status).json(err);
   }
 
-  //Invalid Object ID:
   if (err && err.name && err.name == "CastError" && err.path && err.value) {
     return res
       .status(400)
       .json({ message: "Invalid object id", path: err.path, value: err.value });
   }
-  //express json error
+
   if (err instanceof SyntaxError) {
     return res.status(400).json({ message: "Invalid JSON" });
   }
 
   if (err instanceof MongoServerError && err.code === 11000) {
+    Logger.error("Duplicate key - Must be unique");
     return res.status(400).json({
-      message: "duplicate key - must be unique",
+      message: "Duplicate key - Must be unique",
       value: err.keyValue,
     });
   }
@@ -33,7 +34,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   }
 
   console.error(err);
-  //internal server error
+
   return res.status(500).json(err);
 };
 

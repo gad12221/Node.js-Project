@@ -6,7 +6,6 @@ import { authService } from "./auth-service";
 export const usersService = {
   createUser: async (data: IUserInput) => {
     const user = new User(data);
-    //replace the password with it's hash
     const hash = await authService.hashPassword(user.password);
     user.password = hash;
     return user.save();
@@ -14,18 +13,13 @@ export const usersService = {
 
   loginUser: async ({ email, password }: ILogin) => {
     const user = await User.findOne({ email });
-
     if (!user) {
       throw new BizCardsError(401, "Invalid email or password");
     }
-
-    //check the pass:
     const isValid = await authService.comparePassword(password, user.password);
-
     if (!isValid) {
       throw new BizCardsError(401, "Invalid email or password");
     }
-    // payload {isAdmin ,isBusiness, _id}
     const payload: IJWTPayload = {
       _id: user._id.toString(),
       isAdmin: user.isAdmin,
@@ -33,7 +27,38 @@ export const usersService = {
     };
     return authService.generateJWT(payload);
   },
+
+  getUserById: async (id: string) => {
+    const user = await User.findById(id, { password: 0 });
+    if (!user) {
+      throw new BizCardsError(404, "User not found");
+    }
+    return user;
+  },
+
   getAllUsers: async () => User.find({}, { password: 0 }),
 
-  getUserById: async (id: string) => User.findById(id, { password: 0 }),
+  updateUser: async (data: IUserInput, id: string) => {
+    data.password = await authService.hashPassword(data.password);
+
+
+    return User.findOneAndUpdate({ _id: id }, data, { new: true });
+  },
+
+  changeBizStatus: async (id: string, isBusiness: boolean) => {
+    const user = await User.findById(id);
+    if (!user) {
+      throw new BizCardsError(404, "User not found");
+    }
+    user.isBusiness = isBusiness;
+    return user.save();
+  },
+
+  deleteUser: async (id: string) => {
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      throw new BizCardsError(404, "User not found");
+    }
+    return user;
+  },
 };

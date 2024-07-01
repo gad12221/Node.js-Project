@@ -14,14 +14,12 @@ const extractToken = (req: Request) => {
 
 const validateToken: RequestHandler = (req, res, next) => {
   try {
-    //extract the token from the x-auth-token header:
+
     const token = extractToken(req);
 
-    //check that the token is valid, and extract it's payload:
     const payload = authService.validateJWT(token);
 
-    //add the data to the request =>
-    //available to the next steps in the middleware chain
+
     req.payload = payload;
 
     next();
